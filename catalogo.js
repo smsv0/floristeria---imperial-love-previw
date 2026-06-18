@@ -50,7 +50,7 @@ document.addEventListener("click", (e) => {
 
         const id = Number(e.target.dataset.id);
 
-        const producto = productos.find(
+        const producto = misProductos.find(
             p => p.id === id
         );
 
