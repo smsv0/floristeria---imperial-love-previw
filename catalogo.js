@@ -46,7 +46,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
 document.addEventListener("click", (e) => {
 
-    if (e.target.classList.contains(".btn-shop")) {
+    if (e.target.classList.contains("btn-shop")) {
 
         const id = Number(e.target.dataset.id);
 
