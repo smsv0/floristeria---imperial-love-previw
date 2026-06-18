@@ -1,0 +1,248 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+header
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    max-width: 1600px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 988;
+}
+
+.logo
+{
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.logo img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.navbar
+{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.navbar li
+{
+    position: relative;
+}
+
+.navbar li a
+{
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: black;
+    font-weight: 600;
+}
+
+.navbar li::after
+{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 2px;
+    left: 0;
+    bottom: 0;
+    background-color: rgb(255, 57, 90);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease-out;
+}
+
+.navbar li:hover::after 
+{
+    transform: scaleX(1);
+}
+
+
+/* ===== HAMBURGER MENU ===== */
+.hamburger
+{
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    /* padding: 5px; */
+    background-color: transparent;
+    border: none;
+}
+
+.hamburger span
+{
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: rgb(200, 0, 40);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1)
+{
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2)
+{
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3)
+{
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+
+.container
+{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 45px;
+    gap: 30px;
+}
+
+.input
+{
+    height: 30px;
+    padding-left: 20px;
+}
+
+.text 
+{
+    outline: none;
+    border: 2px solid rgb(246, 136, 154);
+    border-radius: 15px;
+}
+
+#descripcion
+{
+    padding: 10px;
+    border: 2px solid rgb(246, 136, 154);
+    border-radius: 15px;
+}
+
+
+.label
+{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 5px;
+}
+
+.img
+{
+    text-align: center;
+}
+
+.imagen
+{
+    align-self: center;
+}
+
+#guardar
+{
+    height: 40px;
+    border-radius: 10px;
+    outline: none;
+    border: 2px solid rgb(246, 136, 154);
+    background-color: pink;
+    transition: .5s ease;
+}
+
+#guardar:hover
+{
+    background-color: rgb(246, 136, 154);
+}
+
+.label label
+{
+    font-weight: 700;
+}
+
+@media (max-width: 768px){
+    header
+    {
+        justify-content: space-between;
+        padding: 10px;
+        transition: 0.3s ease;
+    }
+
+    .header.active
+    {
+        background-color: pink;
+    }
+
+
+    
+    .navbar
+    {
+        position: fixed;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: pink;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+        z-index: 987;
+    }
+
+    .navbar.open
+    {
+        max-height: 400px;
+    }
+
+    .navbar li
+    {
+        display: flex;
+        width: 100%;
+        border-bottom: 1px solid rgb(255, 180, 195);
+    }
+
+    .navbar li a
+    {
+        width: 100%;
+        padding: 14px 20px;
+        font-size: 1rem;
+    }
+
+    .navbar li::after
+    {
+        display: none;
+    }
+
+    .hamburger
+    {
+        display: flex;
+    }
+
+}
