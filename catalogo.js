@@ -28,7 +28,7 @@ function mostrarProductosEnPantalla(productos) {
                 </p>
             </div>
 
-            <div class="btn-shop">
+            <div class="btn-shop" data-id="${producto.id}">
                 <button>Comprar por WhatsApp</button>
             </div>  
         </div>
