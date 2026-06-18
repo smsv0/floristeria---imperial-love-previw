@@ -700,6 +700,7 @@ footer
     align-items: center;
     justify-content: center;
     border-top: 3px solid rgb(243, 48, 81);
+    margin-top: 50px;
 }
 
 footer .social-icons-footer,
