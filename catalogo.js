@@ -1,13 +1,10 @@
-
-
-// 1. IMPORTAS la función desde tu archivo original
-
 import { obtenerProductos } from './supa.js';
 
-// 2. Creas la función encargada de pintar (renderizar) de manera local
+let misProductos = [];
+
 function mostrarProductosEnPantalla(productos) {
     const contenedor = document.getElementById("contenedor-productos");
-    contenedor.innerHTML = ""; 
+    contenedor.innerHTML = "";
 
     productos.forEach(producto => {
         contenedor.innerHTML += `
@@ -17,28 +14,22 @@ function mostrarProductosEnPantalla(productos) {
             </div>
 
             <div class="card-info">
-                <p class="name">
-                    ${producto.nombre}
-                </p>
-                <p class="price">
-                    $${producto.precio}
-                </p>
-                <p class="description">
-                    ${producto.descripcion}
-                </p>
+                <p class="name">${producto.nombre}</p>
+                <p class="price">$${producto.precio}</p>
+                <p class="description">${producto.descripcion}</p>
             </div>
 
             <div class="btn-shop" data-id="${producto.id}">
                 <button>Comprar por WhatsApp</button>
-            </div>  
+            </div>
         </div>
         `;
     });
 }
 
-// 3. Escuchas la carga de la página para ejecutar el flujo
 window.addEventListener('DOMContentLoaded', async () => {
-    const misProductos = await obtenerProductos(); // Viene importada de supa.js
+    misProductos = await obtenerProductos();
+
     if (misProductos) {
         mostrarProductosEnPantalla(misProductos);
     }
@@ -46,19 +37,21 @@ window.addEventListener('DOMContentLoaded', async () => {
 
 document.addEventListener("click", (e) => {
 
-    if (e.target.classList.contains("btn-shop")) {
+    const btnShop = e.target.closest(".btn-shop");
 
-        const id = Number(e.target.dataset.id);
+    if (!btnShop) return;
 
-        const producto = misProductos.find(
-            p => p.id === id
-        );
+    const id = Number(btnShop.dataset.id);
 
-        const mensaje = `Hola, estoy interesado en ${producto.nombre}`;
+    const producto = misProductos.find(
+        p => p.id === id
+    );
 
-        const url = `https://wa.me/573001234567?text=${encodeURIComponent(mensaje)}`;
+    if (!producto) return;
 
-        window.open(url, "_blank");
-    }
+    const mensaje = `Hola, estoy interesado en ${producto.nombre}`;
 
+    const url = `https://wa.me/573021287930?text=${encodeURIComponent(mensaje)}`;
+
+    window.open(url, "_blank");
 });
