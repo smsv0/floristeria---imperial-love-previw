@@ -43,3 +43,22 @@ window.addEventListener('DOMContentLoaded', async () => {
         mostrarProductosEnPantalla(misProductos);
     }
 });
+
+document.addEventListener("click", (e) => {
+
+    if (e.target.classList.contains(".btn-shop")) {
+
+        const id = Number(e.target.dataset.id);
+
+        const producto = productos.find(
+            p => p.id === id
+        );
+
+        const mensaje = `Hola, estoy interesado en ${producto.nombre}`;
+
+        const url = `https://wa.me/573001234567?text=${encodeURIComponent(mensaje)}`;
+
+        window.open(url, "_blank");
+    }
+
+});
